@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Happy Birthday</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon (custom icon) -->
+    <!-- Ganti favicon.png dengan file icon kamu (contoh: 64x64 atau 256x256, square) -->
+    <link rel="icon" type="image/png" href="favicon-32x32.png" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #ffffff;
+        color: #111111;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      button {
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      :root {
+        --bg: #ffffff;
+        --text: #111111;
+        --muted: #7a7a7a;
+        --border: #e0e0e0;
+        --black: #000000;
+        --white: #ffffff;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      section {
+        padding: 4rem 0;
+      }
+
+      @media (min-width: 768px) {
+        section {
+          padding: 5rem 0;
+        }
+      }
+
+      /* HERO */
+      #hero {
+        position: relative;
+        min-height: 100vh;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at top, #222, #000);
+      }
+
+      .hero-inner {
+        width: 100%;
+      }
+
+      .hero-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: stretch;
+        justify-content: center;
+        padding: 3rem 0;
+      }
+
+      @media (min-width: 900px) {
+        .hero-layout {
+          flex-direction: row;
+          gap: 3rem;
+        }
+      }
+
+      .hero-photo {
+        flex: 1;
+        min-height: 260px;
+        max-height: 480px;
+        background-image: url("Alia.jpg"); /* TODO: replace with your photo */
+        background-size: cover;
+        background-position: center;
+        border-radius: 18px;
+        filter: grayscale(100%);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 22px 50px rgba(0, 0, 0, 0.6);
+        transform: scale(1.01);
+        animation: heroZoom 22s ease-in-out infinite alternate;
+      }
+
+      .hero-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top, transparent, rgba(0, 0, 0, 0.4));
+      }
+
+      @keyframes heroZoom {
+        from {
+          transform: scale(1.01) translateY(0);
+        }
+        to {
+          transform: scale(1.06) translateY(-6px);
+        }
+      }
+
+      .hero-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #f5f5f5;
+        text-align: left;
+      }
+
+      @media (max-width: 899px) {
+        .hero-content {
+          text-align: center;
+        }
+      }
+
+      .hero-title {
+        font-family: "Poppins";
+        font-size: 2.2rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 1rem;
+      }
+
+      @media (min-width: 768px) {
+        .hero-title {
+          font-size: 3rem;
+        }
+      }
+
+      .hero-subtitle {
+        font-size: 0.95rem;
+        color: #d0d0d0;
+        max-width: 420px;
+        margin-bottom: 2rem;
+      }
+
+      @media (max-width: 899px) {
+        .hero-subtitle {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-direction: row;
+        gap: 0.75rem;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      @media (max-width: 899px) {
+        .hero-actions {
+          justify-content: center;
+        }
+      }
+
+      .btn {
+        padding: 0.75rem 1.4rem;
+        font-size: 0.9rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        background: rgba(0, 0, 0, 0.25);
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: background 0.25s ease, transform 0.15s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .btn-primary {
+        background: #ffffff;
+        color: #000000;
+        border-color: #ffffff;
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+      }
+
+      .btn-secondary-light {
+        background: transparent;
+        color: #f5f5f5;
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.09);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      .btn-primary:hover {
+        background: #f3f3f3;
+      }
+
+      .btn-secondary-light:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .btn-icon {
+        font-size: 1rem;
+      }
+
+      .hero-note {
+        margin-top: 1.5rem;
+        font-size: 0.8rem;
+        color: #b5b5b5;
+      }
+
+      @media (max-width: 899px) {
+        .hero-note {
+          text-align: center;
+        }
+      }
+
+      /* SECTION HEADERS */
+      .section-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .section-title {
+        font-family: "Helvetica";
+        font-size: 1.6rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.6rem;
+      }
+
+      .section-subtitle {
+        font-size: 0.9rem;
+        color: var(--muted);
+        max-width: 460px;
+        margin: 0 auto;
+      }
+
+      /* GALLERY */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+
+      @media (min-width: 640px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (min-width: 960px) {
+        .gallery-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      .gallery-item {
+        border: 1px solid var(--border);
+        padding: 0.75rem;
+        background: #fafafa;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+        border-color: #cfcfcf;
+        background: #fdfdfd;
+      }
+
+      .gallery-photo {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        filter: grayscale(100%);
+      }
+
+      .gallery-meta {
+        margin-top: 0.6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .gallery-year {
+        font-size: 0.9rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #555555;
+      }
+
+      .gallery-caption {
+        font-size: 0.85rem;
+        color: #777777;
+      }
+
+      /* INVITATION */
+      #invitation {
+        background: #f7f7f7;
+      }
+
+      .invite-card {
+        max-width: 520px;
+        margin: 0 auto;
+        border: 1px solid #dedede;
+        background: #ffffff;
+        padding: 2rem 1.5rem 2.4rem;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .invite-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 50px rgba(0, 0, 0, 0.07);
+      }
+
+      @media (min-width: 640px) {
+        .invite-card {
+          padding: 2.5rem 2.75rem 3rem;
+        }
+      }
+
+      .invite-title {
+        font-family: "Helvetica";
+        font-size: 1.4rem;
+        letter-spacing: 0.12em;
+        margin-bottom: 1.5rem;
+      }
+
+      .invite-line {
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .invite-label {
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 0.72rem;
+        color: var(--muted);
+        display: block;
+        margin-bottom: 0.1rem;
+      }
+
+      .invite-value {
+        font-size: 0.95rem;
+      }
+
+      .invite-note {
+        font-size: 0.8rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #777777;
+      }
+
+      .invite-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        padding: 0.7rem 1.6rem;
+        border-radius: 999px;
+        border: 1px solid #111111;
+        background: #111111;
+        color: #ffffff;
+        font-size: 0.9rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      }
+
+      .invite-cta:hover {
+        background: #ffffff;
+        color: #111111;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+      }
+
+      /* FOOTER */
+      footer {
+        padding: 1.5rem 0 2rem;
+        text-align: center;
+        font-size: 0.8rem;
+        color: #a0a0a0;
+      }
+
+      /* MODAL (ENVELOPE) */
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+        padding: 1.5rem;
+      }
+
+      .modal-backdrop.active {
+        display: flex;
+      }
+
+      .modal {
+        max-width: 600px;
+        width: 100%;
+        background: #111111;
+        color: #f9f9f9;
+        border: 1px solid #333333;
+        padding: 2rem 1.5rem 1.6rem;
+        position: relative;
+        transform: scale(0.9) translateY(12px);
+        opacity: 0;
+        animation: modalIn 0.4s ease forwards;
+        transform-origin: center;
+      }
+
+      @media (min-width: 640px) {
+        .modal {
+          padding: 2.5rem 2.4rem 2rem;
+        }
+      }
+
+      @keyframes modalIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9) translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 0.9rem;
+        right: 0.9rem;
+        border: none;
+        background: transparent;
+        color: #888888;
+        font-size: 1.2rem;
+        line-height: 1;
+        transition: color 0.2s ease, transform 0.15s ease;
+      }
+
+      .modal-close:hover {
+        color: #ffffff;
+        transform: scale(1.1);
+      }
+
+      .envelope-icon {
+        width: 76px;
+        height: 48px;
+        margin: 0 auto 1.4rem;
+        position: relative;
+        border-radius: 3px;
+        overflow: hidden;
+        border: 1px solid #f3f3f3;
+        background: linear-gradient(to bottom, #181818, #101010);
+      }
+
+      .envelope-icon::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-left: 1px solid #f3f3f3;
+        border-right: 1px solid #f3f3f3;
+        border-bottom: 1px solid #f3f3f3;
+        transform: translateY(-50%) rotate(45deg);
+        transform-origin: center;
+        top: 50%;
+        background: #111111;
+      }
+
+      .modal-title {
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 0.8rem;
+        color: #bdbdbd;
+        margin-bottom: 1rem;
+      }
+
+      .modal-message {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        min-height: 6.5rem;
+        white-space: pre-wrap;
+      }
+
+      .modal-footer {
+        margin-top: 1.8rem;
+        text-align: right;
+        font-size: 0.85rem;
+        color: #bdbdbd;
+      }
+
+      /* FADE / REVEAL ANIMATIONS */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(10px);
+        animation: fadeInUp 0.7s ease forwards;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* FLOATING MUSIC BUTTON */
+      .music-toggle {
+        position: fixed;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        z-index: 60;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.7);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        font-size: 0.85rem;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        transition: background 0.2s ease, transform 0.1s ease, border-color 0.2s ease, opacity 0.2s ease;
+      }
+
+      .music-toggle:hover {
+        background: rgba(0, 0, 0, 0.85);
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.7);
+      }
+
+      .music-toggle-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+      }
+
+      .music-toggle-label {
+        white-space: nowrap;
+      }
+
+      @media (max-width: 480px) {
+        .music-toggle {
+          padding: 0.6rem 0.8rem;
+          right: 1rem;
+          bottom: 1rem;
+          font-size: 0.78rem;
+        }
+        .music-toggle-label {
+          display: none; /* on mobile just icon */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background music (replace music.mp3) -->
+    <audio id="bg-music" loop autoplay muted preload="auto">
+      <source src="music.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-inner container fade-in-up">
+        <div class="hero-layout">
+          <div class="hero-photo"></div>
+
+          <div class="hero-content">
+            <h1 class="hero-title">Happy Birthday, Alia🩶</h1>
+            <p class="hero-subtitle">I made this little page to celebrate you, birthday princess!</p>
+
+            <div class="hero-actions">
+              <button id="openWishBtn" class="btn btn-primary">
+                <span class="btn-icon">✉️</span>
+                <span>Read My Wish</span>
+              </button>
+            </div>
+
+            <p class="hero-note">Scroll down to travel through some memories.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">A Little Time Machine</h2>
+          <p class="section-subtitle">Just us, from the past few years.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- 2020–2025, isi dengan foto kalian berdua -->
+          <article class="gallery-item reveal">
+            <img src="photo-2020.jpg" alt="Us in 2020" class="gallery-photo" loading="lazy" />
+            <div class="gallery-meta">
+              <span class="gallery-year">2020</span>
+              <p class="gallery-caption"></p>
+            </div>
+          </article>
+
+          <article class="gallery-item reveal">
+            <img src="photo-2021.jpg" alt="Us in 2021" class="gallery-photo" loading="lazy" />
+            <div class="gallery-meta">
+              <span class="gallery-year">2021</span>
+              <p class="gallery-caption"></p>
+            </div>
+          </article>
+
+          <article class="gallery-item reveal">
+            <img src="photo-2022.jpg" alt="Us in 2022" class="gallery-photo" loading="lazy" />
+            <div class="gallery-meta">
+              <span class="gallery-year">2022</span>
+              <p class="gallery-caption"></p>
+            </div>
+          </article>
+
+          <article class="gallery-item reveal">
+            <img src="photo-2023.jpg" alt="Us in 2023" class="gallery-photo" loading="lazy" />
+            <div class="gallery-meta">
+              <span class="gallery-year">2023</span>
+              <p class="gallery-caption"></p>
+            </div>
+          </article>
+
+          <article class="gallery-item reveal">
+            <img src="photo-2024.JPG" alt="Us in 2024" class="gallery-photo" loading="lazy" />
+            <div class="gallery-meta">
+              <span class="gallery-year">2024</span>
+              <p class="gallery-caption"></p>
+            </div>
+          </article>
+
+          <article class="gallery-item reveal">
+            <img src="photo-2025.jpg" alt="Us in 2025" class="gallery-photo" loading="lazy" />
+            <div class="gallery-meta">
+              <span class="gallery-year">2025</span>
+              <p class="gallery-caption"></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVITATION -->
+    <section id="invitation">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Let’s Celebrate Your Birthday!</h2>
+        </div>
+
+        <div class="invite-card reveal">
+          <h3 class="invite-title">RSVP</h3>
+
+          <p class="invite-line">
+            <span class="invite-label">Date</span>
+            <span class="invite-value">Saturday, 6 December 2025</span>
+          </p>
+
+          <p class="invite-line">
+            <span class="invite-label">Time</span>
+            <span class="invite-value">09:30 – 23:00</span>
+          </p>
+
+          <p class="invite-line">
+            <span class="invite-label">Place</span>
+            <span class="invite-value">Around Jakarta - Tangerang</span>
+          </p>
+
+          <p class="invite-line">
+            <span class="invite-label">Dresscode</span>
+            <span class="invite-value">Black or White (like this page)</span>
+          </p>
+
+          <p class="invite-note">Just bring yourself. I’ll take care of the rest. 💌</p>
+
+          <!-- Accept invitation button (ganti href sesuai kebutuhan) -->
+          <a href="https://api.whatsapp.com/send?phone=62851560556942&text=Hi%20sayang.%20Let%27s%20celebrate%20my%20birthday!!!!!!!!%20%F0%9F%A5%B0%F0%9F%A5%B0%F0%9F%A5%B0" class="invite-cta">
+            <span>Accept Invitation</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>Made with love by Alfin · For you.</footer>
+
+    <!-- MODAL: WISH ENVELOPE -->
+    <div id="wishModal" class="modal-backdrop">
+      <div class="modal">
+        <button class="modal-close" id="closeWishBtn" aria-label="Close">×</button>
+
+        <div class="envelope-icon"></div>
+        <p class="modal-title">A LETTER FOR YOU</p>
+
+        <div class="modal-message" id="wishText"></div>
+
+        <div class="modal-footer">— Alfin</div>
+      </div>
+    </div>
+
+    <!-- FLOATING MUSIC TOGGLE -->
+    <button id="toggleMusicBtn" class="music-toggle" aria-label="Toggle background music">
+      <span class="music-toggle-icon">❚❚</span>
+      <span class="music-toggle-label">Pause Music</span>
+    </button>
+
+    <script>
+      // --- WISH MODAL + TYPEWRITER ---
+      const openWishBtn = document.getElementById("openWishBtn");
+      const closeWishBtn = document.getElementById("closeWishBtn");
+      const wishModal = document.getElementById("wishModal");
+      const wishTextEl = document.getElementById("wishText");
+
+      const fullWishText = `Happy birthday, sayang.
+
+Thank you for always trying to become the best version of yourself every single day.
+
+I’m happy I get to see how far you’ve come and how beautifully you’ve grown.
+
+I hope this year treats you even better than the last — with good news, gentle days, and all the things you’ve been wishing for.
+
+I love you, sayang.`;
+
+      let typeIndex = 0;
+      let typingInterval = null;
+
+      function startTypewriter() {
+        clearInterval(typingInterval);
+        wishTextEl.textContent = "";
+        typeIndex = 0;
+
+        typingInterval = setInterval(() => {
+          if (typeIndex < fullWishText.length) {
+            wishTextEl.textContent += fullWishText.charAt(typeIndex);
+            typeIndex++;
+          } else {
+            clearInterval(typingInterval);
+          }
+        }, 40);
+      }
+
+      openWishBtn.addEventListener("click", () => {
+        wishModal.classList.add("active");
+        // restart animation by forcing reflow on modal
+        const modal = wishModal.querySelector(".modal");
+        modal.style.animation = "none";
+        void modal.offsetWidth;
+        modal.style.animation = "";
+        startTypewriter();
+      });
+
+      closeWishBtn.addEventListener("click", () => {
+        wishModal.classList.remove("active");
+        clearInterval(typingInterval);
+      });
+
+      wishModal.addEventListener("click", (e) => {
+        if (e.target === wishModal) {
+          wishModal.classList.remove("active");
+          clearInterval(typingInterval);
+        }
+      });
+
+      // --- MUSIC TOGGLE (Option A: autoplay muted + fade-in) ---
+      const bgMusic = document.getElementById("bg-music");
+      const toggleMusicBtn = document.getElementById("toggleMusicBtn");
+      const musicLabel = toggleMusicBtn.querySelector(".music-toggle-label");
+      const musicIcon = toggleMusicBtn.querySelector(".music-toggle-icon");
+
+      let isMusicPlaying = true; // starts as playing
+      let fadeInterval = null;
+
+      function fadeVolume(targetVolume, duration = 1200, pauseWhenDone = false) {
+        clearInterval(fadeInterval);
+        const steps = 20;
+        const current = bgMusic.volume;
+        const diff = targetVolume - current;
+        const stepTime = duration / steps;
+        let step = 0;
+
+        fadeInterval = setInterval(() => {
+          step++;
+          const progress = step / steps;
+          bgMusic.volume = current + diff * progress;
+
+          if (step >= steps) {
+            clearInterval(fadeInterval);
+            bgMusic.volume = targetVolume;
+            if (pauseWhenDone) {
+              bgMusic.pause();
+            }
+          }
+        }, stepTime);
+      }
+
+      // try to autoplay muted then fade in
+      bgMusic.volume = 0;
+      bgMusic
+        .play()
+        .then(() => {
+          // unmute after start for some browsers
+          bgMusic.muted = false;
+          fadeVolume(0.15, 1800, false);
+        })
+        .catch(() => {
+          // if blocked, wait for first user interaction
+          document.body.addEventListener(
+            "click",
+            () => {
+              bgMusic.muted = false;
+              bgMusic.play();
+              fadeVolume(0.15, 1800, false);
+            },
+            { once: true }
+          );
+        });
+
+      toggleMusicBtn.addEventListener("click", () => {
+        if (isMusicPlaying) {
+          // fade out then pause
+          fadeVolume(0.0, 600, true);
+          isMusicPlaying = false;
+          if (musicLabel) musicLabel.textContent = "Play Music";
+          musicIcon.textContent = "♪";
+        } else {
+          // resume play with small fade-in
+          bgMusic
+            .play()
+            .then(() => {
+              fadeVolume(0.15, 800, false);
+              isMusicPlaying = true;
+              if (musicLabel) musicLabel.textContent = "Pause Music";
+              musicIcon.textContent = "❚❚";
+            })
+            .catch((err) => {
+              console.error("Unable to play audio:", err);
+            });
+        }
+      });
+
+      // --- SCROLL REVEAL ---
+      const revealEls = document.querySelectorAll(".reveal");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.18,
+        }
+      );
+
+      revealEls.forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
